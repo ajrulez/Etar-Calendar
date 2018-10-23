@@ -80,6 +80,7 @@ import com.android.calendar.CalendarController.EventInfo;
 import com.android.calendar.CalendarController.EventType;
 import com.android.calendar.CalendarController.ViewType;
 import com.android.calendar.agenda.AgendaFragment;
+import com.android.calendar.alerts.ProviderChangedReceiverAsJob;
 import com.android.calendar.month.MonthByWeekFragment;
 import com.android.calendar.selectcalendars.SelectVisibleCalendarsFragment;
 import com.android.datetimepicker.date.DatePickerDialog;
@@ -272,6 +273,8 @@ public class AllInOneActivity extends AbstractCalendarActivity implements EventH
                     Calendars._ID
             }, null, null /* selection args */, null /* sort order */);
         }
+
+        ProviderChangedReceiverAsJob.schedule(this);
 
         // This needs to be created before setContentView
         mController = CalendarController.getInstance(this);
